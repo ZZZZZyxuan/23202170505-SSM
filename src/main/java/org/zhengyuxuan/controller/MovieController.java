@@ -3,11 +3,11 @@ package org.zhengyuxuan.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.Movie;
+import org.zhengyuxuan.entity.ResultVO;
+import org.zhengyuxuan.service.AppConstants;
 import org.zhengyuxuan.service.MovieService;
 import org.zhengyuxuan.service.ReviewService;
-import org.zhengyuxuan.vo.ResultVO;
 
 import java.util.HashMap;
 import java.util.List;

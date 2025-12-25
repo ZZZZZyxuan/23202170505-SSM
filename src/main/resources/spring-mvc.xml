@@ -11,8 +11,8 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 扫描Controller层组件和异常处理器 -->
-    <context:component-scan base-package="org.zhengyuxuan.controller, org.zhengyuxuan.exception"/>
+    <!-- 扫描Controller层组件 -->
+    <context:component-scan base-package="org.zhengyuxuan.controller"/>
 
     <!-- 开启SpringMVC注解驱动 -->
     <mvc:annotation-driven>
@@ -44,7 +44,7 @@
             <mvc:mapping path="/api/review/**"/>
             <mvc:mapping path="/api/user/profile"/>
             <mvc:mapping path="/user/profile"/>
-            <bean class="org.zhengyuxuan.interceptor.LoginInterceptor"/>
+            <bean class="org.zhengyuxuan.controller.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

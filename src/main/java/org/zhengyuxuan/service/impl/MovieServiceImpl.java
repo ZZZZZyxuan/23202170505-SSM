@@ -2,10 +2,10 @@ package org.zhengyuxuan.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zhengyuxuan.dao.MovieMapper;
 import org.zhengyuxuan.entity.Movie;
-import org.zhengyuxuan.mapper.MovieMapper;
 import org.zhengyuxuan.service.MovieService;
-import org.zhengyuxuan.util.ValidationUtil;
+import org.zhengyuxuan.service.ValidationUtil;
 
 import java.util.List;
 

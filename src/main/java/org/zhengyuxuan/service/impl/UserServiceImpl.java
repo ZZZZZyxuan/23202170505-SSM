@@ -3,11 +3,11 @@ package org.zhengyuxuan.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zhengyuxuan.constant.AppConstants;
+import org.zhengyuxuan.dao.UserMapper;
 import org.zhengyuxuan.entity.User;
-import org.zhengyuxuan.mapper.UserMapper;
+import org.zhengyuxuan.service.AppConstants;
+import org.zhengyuxuan.service.PasswordUtil;
 import org.zhengyuxuan.service.UserService;
-import org.zhengyuxuan.util.PasswordUtil;
 
 /**
  * 用户服务实现类

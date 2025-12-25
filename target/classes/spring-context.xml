@@ -38,7 +38,7 @@
 
     <!-- 配置Mapper扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.zhengyuxuan.mapper"/>
+        <property name="basePackage" value="org.zhengyuxuan.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

@@ -3,11 +3,11 @@ package org.zhengyuxuan.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.zhengyuxuan.constant.AppConstants;
+import org.zhengyuxuan.entity.ResultVO;
 import org.zhengyuxuan.entity.User;
+import org.zhengyuxuan.service.AppConstants;
 import org.zhengyuxuan.service.UserService;
-import org.zhengyuxuan.util.ValidationUtil;
-import org.zhengyuxuan.vo.ResultVO;
+import org.zhengyuxuan.service.ValidationUtil;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;

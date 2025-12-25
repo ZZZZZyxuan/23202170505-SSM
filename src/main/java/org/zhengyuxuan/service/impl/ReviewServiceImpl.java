@@ -3,9 +3,9 @@ package org.zhengyuxuan.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zhengyuxuan.dao.MovieMapper;
+import org.zhengyuxuan.dao.ReviewMapper;
 import org.zhengyuxuan.entity.Review;
-import org.zhengyuxuan.mapper.MovieMapper;
-import org.zhengyuxuan.mapper.ReviewMapper;
 import org.zhengyuxuan.service.ReviewService;
 
 import java.math.BigDecimal;
