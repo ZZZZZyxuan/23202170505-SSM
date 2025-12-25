@@ -1,852 +1,852 @@
 /* ===== 基础样式 ===== */
-}
-    }
-        width: 100%;
-    .review-movie-info {
-
-    }
-        flex-direction: column;
-    .review-item.with-movie {
-
-    }
-        text-align: center;
-        flex-direction: column;
-    .profile-header {
-
-    }
-        margin: 0 auto;
-        max-width: 300px;
-        width: 100%;
-    .movie-poster-large {
-
-    }
-        flex-direction: column;
-    .movie-detail-header {
-
-    }
-        grid-template-columns: repeat(2, 1fr);
-    .movie-grid {
-
-    }
-        max-width: none;
-        width: 100%;
-    .filter-select, .search-input {
-
-    }
-        width: 100%;
-    .filter-group {
-
-    }
-        align-items: stretch;
-        flex-direction: column;
-    .filter-form {
-
-    }
-        gap: 15px;
-        flex-direction: column;
-    .header-content {
-@media (max-width: 768px) {
-/* ===== 响应式 ===== */
-
-}
-    margin-top: 10px;
-    color: #999;
-    font-size: 0.9rem;
-.footer-info {
-
-}
-    text-align: center;
-.footer-content {
-
-}
-    margin-top: auto;
-    padding: 30px 0;
-    color: white;
-    background: #333;
-.footer {
-/* ===== 页脚 ===== */
-
-}
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    padding: 30px;
-    background: white;
-.my-reviews {
-
-}
-    font-size: 0.9rem;
-    color: #999;
-.stat-label {
-
-}
-    color: #ff6b6b;
-    font-weight: bold;
-    font-size: 2rem;
-.stat-value {
-
-}
-    flex-direction: column;
-    display: flex;
-.stat-item {
-
-}
-    text-align: center;
-.profile-stats {
-
-}
-    color: #666;
-    font-size: 0.9rem;
-.profile-join {
-
-}
-    margin-bottom: 10px;
-    color: #999;
-.profile-username {
-
-}
-    margin-bottom: 5px;
-    font-size: 1.8rem;
-.profile-name {
-
-}
-    flex: 1;
-.profile-info {
-
-}
-    font-size: 3rem;
-.avatar-icon {
-
-}
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-    height: 100px;
-    width: 100px;
-.profile-avatar {
-
-}
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    gap: 30px;
-    align-items: center;
-    display: flex;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    padding: 30px;
-    background: white;
-.profile-header {
-/* ===== 个人中心 ===== */
-
-}
-    text-decoration: underline;
-.auth-footer a:hover {
-
-}
-    font-weight: 500;
-    color: #ff6b6b;
-.auth-footer a {
-
-}
-    color: #666;
-    margin-top: 20px;
-    text-align: center;
-.auth-footer {
-
-}
-    min-height: 20px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    color: #dc3545;
-.form-error {
-
-}
-    color: #dc3545;
-.form-hint.error {
-
-}
-    color: #28a745;
-.form-hint.success {
-
-}
-    display: block;
-    margin-top: 5px;
-    font-size: 0.8rem;
-.form-hint {
-
-}
-    border-color: #ff6b6b;
-    outline: none;
-.form-input:focus {
-
-}
-    transition: border-color 0.3s;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 12px 15px;
-    width: 100%;
-.form-input {
-
-}
-    margin-bottom: 20px;
-.auth-form .form-group {
-
-}
-    color: #333;
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-    text-align: center;
-.auth-title {
-
-}
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 40px;
-    background: white;
-.auth-box {
-
-}
-    min-height: 60vh;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-.auth-container {
-/* ===== 认证页面 ===== */
-
-}
-    color: #666;
-    font-size: 0.9rem;
-.my-rating .rating-label {
-
-}
-    margin-bottom: 10px;
-.my-rating {
-
-}
-    flex: 1;
-.review-content-section {
-
-}
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-.review-movie-detail h4 {
-
-}
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-.review-movie-poster img {
-
-}
-    overflow: hidden;
-    border-radius: 5px;
-    height: 80px;
-    width: 60px;
-.review-movie-poster {
-
-}
-    background-color: #f0f0f0;
-.review-movie-info:hover {
-
-}
-    transition: background-color 0.3s;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    gap: 15px;
-    display: flex;
-    width: 200px;
-    flex-shrink: 0;
-.review-movie-info {
-
-}
-    gap: 20px;
-    display: flex;
-.review-item.with-movie {
-/* ===== 个人中心评论 ===== */
-
-}
-    gap: 10px;
-    display: flex;
-.review-actions {
-
-}
-    color: #999;
-    font-size: 0.85rem;
-.review-time {
-
-}
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-.review-footer {
-
-}
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 15px;
-.review-content {
-
-}
-    color: #ffc107;
-.review-rating .star.filled {
-
-}
-    color: #ddd;
-.review-rating .star {
-
-}
-    font-weight: 500;
-.reviewer-name {
-
-}
-    font-size: 2rem;
-.reviewer-avatar {
-
-}
-    gap: 10px;
-    align-items: center;
-    display: flex;
-.reviewer-info {
-
-}
-    margin-bottom: 15px;
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-.review-header {
-
-}
-    border-bottom: none;
-.review-item:last-child {
-
-}
-    border-bottom: 1px solid #eee;
-    padding: 20px;
-.review-item {
-
-}
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-.review-list h3 {
-/* ===== 评论列表 ===== */
-
-}
-    border-color: #ff6b6b;
-    outline: none;
-.form-textarea:focus {
-
-}
-    font-family: inherit;
-    resize: vertical;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 12px;
-    width: 100%;
-.form-textarea {
-
-}
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
-.form-group label {
-
-}
-    margin-bottom: 15px;
-.form-group {
-
-}
-    color: #ffc107;
-.star-rating .star.hover {
-.star-rating .star.active,
-
-}
-    transition: color 0.2s;
-    cursor: pointer;
-    color: #ddd;
-    font-size: 2rem;
-.star-rating .star {
-
-}
-    gap: 5px;
-    display: flex;
-.star-rating {
-
-}
-    margin-bottom: 15px;
-    gap: 10px;
-    align-items: center;
-    display: flex;
-.rating-input {
-
-}
-    margin-bottom: 15px;
-.review-form-container h3 {
-
-}
-    margin-bottom: 30px;
-    border-radius: 10px;
-    padding: 20px;
-    background: #f9f9f9;
-.review-form-container {
-
-}
-    color: #666;
-    margin-bottom: 15px;
-.login-prompt p {
-
-}
-    margin-bottom: 30px;
-    border-radius: 10px;
-    background: #f9f9f9;
-    padding: 30px;
-    text-align: center;
-.login-prompt {
-
-}
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    padding: 30px;
-    border-radius: 10px;
-    background: white;
-.review-section {
-/* ===== 评论区 ===== */
-
-}
-    color: #666;
-    line-height: 1.8;
-.movie-synopsis p {
-
-}
-    color: #333;
-    margin-bottom: 15px;
-.movie-synopsis h3 {
-
-}
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-.movie-synopsis {
-
-}
-    margin-right: 10px;
-    color: #666;
-.movie-meta-detail strong {
-
-}
-    font-size: 1rem;
-    margin-bottom: 10px;
-.movie-meta-detail p {
-
-}
-    margin-left: 10px;
-    color: #666;
-    font-size: 0.9rem;
-.rating-count {
-
-}
-    color: #ff6b6b;
-    font-weight: bold;
-    font-size: 2.5rem;
-.rating-score-large {
-
-}
-    margin-right: 10px;
-    color: #666;
-    font-size: 0.9rem;
-.rating-label {
-
-}
-    display: inline-block;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-.movie-rating-large {
-
-}
-    margin-bottom: 20px;
-    font-size: 2rem;
-.movie-detail-title {
-
-}
-    flex: 1;
-.movie-detail-info {
-
-}
-    height: auto;
-    width: 100%;
-.movie-poster-large img {
-
-}
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    border-radius: 10px;
-    width: 300px;
-    flex-shrink: 0;
-.movie-poster-large {
-
-}
-    margin-bottom: 30px;
-    gap: 30px;
-    display: flex;
-.movie-detail-header {
-
-}
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    padding: 30px;
-    border-radius: 10px;
-    background: white;
-.movie-detail {
-/* ===== 电影详情页 ===== */
-
-}
-    margin-bottom: 20px;
-    font-size: 4rem;
-.empty-icon {
-
-}
-    color: #999;
-    padding: 60px 20px;
-    text-align: center;
-.empty-state {
-/* ===== 空状态 ===== */
-
-}
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    color: #666;
-    font-size: 0.85rem;
-.movie-director {
-
-}
-    margin-right: 5px;
-    border-radius: 3px;
-    padding: 2px 8px;
-    background: #f0f0f0;
-    display: inline-block;
-.movie-genre, .movie-region {
-
-}
-    margin-bottom: 5px;
-    color: #999;
-    font-size: 0.85rem;
-.movie-meta {
-
-}
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    margin-bottom: 8px;
-    font-size: 1rem;
-.movie-title {
-
-}
-    padding: 15px;
-.movie-info {
-
-}
-    margin-right: 3px;
-.rating-star {
-
-}
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: #ffc107;
-    background: rgba(0, 0, 0, 0.7);
-    right: 10px;
-    top: 10px;
-    position: absolute;
-.movie-rating {
-
-}
-    font-size: 1.5rem;
-.poster-placeholder.small span {
-
-}
-    width: 60px;
-    height: 80px;
-.poster-placeholder.small {
-
-}
-    height: 400px;
-.poster-placeholder.large {
-
-}
-    padding: 0 10px;
-    text-align: center;
-    font-size: 1rem;
-.poster-placeholder .poster-title {
-
-}
-    margin-bottom: 10px;
-    font-size: 4rem;
-.poster-placeholder .poster-icon {
-
-}
-    color: white;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100%;
-    width: 100%;
-.poster-placeholder {
-
-}
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-.movie-poster img {
-
-}
-    overflow: hidden;
-    height: 280px;
-    position: relative;
-.movie-poster {
-
-}
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
-.movie-card:hover {
-
-}
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border-radius: 10px;
-    background: white;
-.movie-card {
-
-}
-    gap: 25px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    display: grid;
-.movie-grid {
-
-}
-    font-weight: normal;
-    color: #999;
-    font-size: 0.9rem;
-.movie-count {
-
-}
-    gap: 10px;
-    align-items: center;
-    display: flex;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-.section-title {
-/* ===== 电影列表 ===== */
-
-}
-    font-size: 0.8rem;
-    padding: 6px 12px;
-.btn-small {
-
-}
-    width: 100%;
-.btn-block {
-
-}
-    background-color: #ff3344;
-.btn-danger:hover {
-
-}
-    color: white;
-    background-color: #ff4757;
-.btn-danger {
-
-}
-    background-color: #e0e0e0;
-.btn-secondary:hover {
-
-}
-    color: #666;
-    background-color: #f0f0f0;
-.btn-secondary {
-
-}
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    transform: translateY(-2px);
-.btn-primary:hover {
-
-}
-    color: white;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-.btn-primary {
-
-}
-    text-align: center;
-    display: inline-block;
-    transition: all 0.3s;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border-radius: 5px;
-    border: none;
-    padding: 10px 20px;
-.btn {
-/* ===== 按钮样式 ===== */
-
-}
-    max-width: 300px;
-    width: 100%;
-    font-size: 0.9rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 8px 12px;
-    flex: 1;
-.search-input {
-
-}
-    min-width: 200px;
-    flex: 1;
-.search-group {
-
-}
-    min-width: 120px;
-    font-size: 0.9rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 8px 12px;
-.filter-select {
-
-}
-    font-size: 0.9rem;
-    color: #666;
-.filter-group label {
-
-}
-    gap: 8px;
-    align-items: center;
-    display: flex;
-.filter-group {
-
-}
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    display: flex;
-.filter-form {
-
-}
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    border-radius: 10px;
-    padding: 20px;
-    background: white;
-.filter-section {
-/* ===== 筛选区域 ===== */
-
-}
-    padding: 30px 0;
-    flex: 1;
-.main-content {
-/* ===== 主内容区 ===== */
-
-}
-    background-color: rgba(0, 0, 0, 0.2);
-.logout-btn {
-
-}
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 8px 16px;
-    color: white;
-    gap: 8px;
-    align-items: center;
-    display: flex;
-.user-info {
-
-}
-    background-color: rgba(255, 255, 255, 0.9);
-.btn-register:hover {
-
-}
-    font-weight: bold;
-    color: #ff6b6b;
-    background-color: white;
-.btn-register {
-
-}
-    background-color: rgba(255, 255, 255, 0.2);
-.nav-link:hover {
-
-}
-    transition: background-color 0.3s;
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 1rem;
-    color: white;
-.nav-link {
-
-}
-    gap: 20px;
-    align-items: center;
-    display: flex;
-.nav {
-
-}
-    font-size: 2rem;
-.logo-icon {
-
-}
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: white;
-    gap: 10px;
-    align-items: center;
-    display: flex;
-.logo {
-
-}
-    align-items: center;
-    justify-content: space-between;
-    display: flex;
-.header-content {
-
-}
-    z-index: 1000;
-    top: 0;
-    position: sticky;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-.header {
-/* ===== 头部样式 ===== */
-
-}
-    padding: 0 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-.container {
-
-}
-    color: inherit;
-    text-decoration: none;
-a {
-
-}
-    flex-direction: column;
-    display: flex;
-    min-height: 100vh;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-body {
-
-}
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== 头部样式 ===== */
+.header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-register {
+    background-color: white;
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.btn-register:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+.logout-btn {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== 主内容区 ===== */
+.main-content {
+    flex: 1;
+    padding: 30px 0;
+}
+
+/* ===== 筛选区域 ===== */
+.filter-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    min-width: 120px;
+}
+
+.search-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* ===== 按钮样式 ===== */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-danger {
+    background-color: #ff4757;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #ff3344;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+/* ===== 电影列表 ===== */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.movie-count {
+    font-size: 0.9rem;
+    color: #999;
+    font-weight: normal;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.movie-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.movie-poster {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.poster-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.poster-placeholder .poster-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.poster-placeholder .poster-title {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.poster-placeholder.large {
+    height: 400px;
+}
+
+.poster-placeholder.small {
+    height: 80px;
+    width: 60px;
+}
+
+.poster-placeholder.small span {
+    font-size: 1.5rem;
+}
+
+.movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffc107;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.rating-star {
+    margin-right: 3px;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-title {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-meta {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.movie-genre, .movie-region {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.movie-director {
+    font-size: 0.85rem;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== 空状态 ===== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+/* ===== 电影详情页 ===== */
+.movie-detail {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.movie-detail-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.movie-poster-large {
+    flex-shrink: 0;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster-large img {
+    width: 100%;
+    height: auto;
+}
+
+.movie-detail-info {
+    flex: 1;
+}
+
+.movie-detail-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.movie-rating-large {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.rating-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-right: 10px;
+}
+
+.rating-score-large {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.rating-count {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 10px;
+}
+
+.movie-meta-detail p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.movie-meta-detail strong {
+    color: #666;
+    margin-right: 10px;
+}
+
+.movie-synopsis {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.movie-synopsis h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.movie-synopsis p {
+    line-height: 1.8;
+    color: #666;
+}
+
+/* ===== 评论区 ===== */
+.review-section {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.login-prompt p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.review-form-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.review-form-container h3 {
+    margin-bottom: 15px;
+}
+
+.rating-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.star-rating {
+    display: flex;
+    gap: 5px;
+}
+
+.star-rating .star {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating .star.active,
+.star-rating .star.hover {
+    color: #ffc107;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #ff6b6b;
+}
+
+/* ===== 评论列表 ===== */
+.review-list h3 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.review-item {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewer-avatar {
+    font-size: 2rem;
+}
+
+.reviewer-name {
+    font-weight: 500;
+}
+
+.review-rating .star {
+    color: #ddd;
+}
+
+.review-rating .star.filled {
+    color: #ffc107;
+}
+
+.review-content {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-time {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.review-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ===== 个人中心评论 ===== */
+.review-item.with-movie {
+    display: flex;
+    gap: 20px;
+}
+
+.review-movie-info {
+    flex-shrink: 0;
+    width: 200px;
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.review-movie-info:hover {
+    background-color: #f0f0f0;
+}
+
+.review-movie-poster {
+    width: 60px;
+    height: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.review-movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-movie-detail h4 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.review-content-section {
+    flex: 1;
+}
+
+.my-rating {
+    margin-bottom: 10px;
+}
+
+.my-rating .rating-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ===== 认证页面 ===== */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.auth-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+}
+
+.form-hint {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-hint.success {
+    color: #28a745;
+}
+
+.form-hint.error {
+    color: #dc3545;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    min-height: 20px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #ff6b6b;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== 个人中心 ===== */
+.profile-header {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-icon {
+    font-size: 3rem;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.profile-username {
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.profile-join {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.profile-stats {
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.my-reviews {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== 页脚 ===== */
+.footer {
+    background: #333;
+    color: white;
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-info {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .filter-select, .search-input {
+        width: 100%;
+        max-width: none;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .movie-detail-header {
+        flex-direction: column;
+    }
+
+    .movie-poster-large {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .review-item.with-movie {
+        flex-direction: column;
+    }
+
+    .review-movie-info {
+        width: 100%;
+    }
+}
 

@@ -1,171 +1,143 @@
-# 淘票票影评社区 - SSM框架实战项目
+# 淘票票影评社区
+
+基于 SSM 框架的电影评分与评论社区系统
 
 ## 项目简介
 
-基于SSM（Spring + SpringMVC + MyBatis）框架开发的电影评分与评论社区，实现了用户注册登录、电影信息展示、评分评论、个人中心等核心功能。
+这是一个基于 Spring + SpringMVC + MyBatis (SSM) 框架的电影评论社区平台，支持用户注册登录、浏览电影、发表评分和评论等功能。
 
 ## 技术栈
 
-- **后端框架**：Spring 5.3.20 + SpringMVC + MyBatis 3.5.10
-- **数据库**：MySQL 8.0 + Druid连接池
-- **前端技术**：JSP + JSTL + CSS3 + JavaScript (Fetch API)
-- **项目构建**：Maven
-- **日志框架**：SLF4J + Logback
+- **后端框架**: Spring 5.3.20 + SpringMVC + MyBatis 3.5.10
+- **数据库**: MySQL 8.0
+- **连接池**: Druid 1.2.11
+- **前端技术**: JSP + JSTL + CSS3 + JavaScript
+- **项目构建**: Maven
+- **服务器**: Tomcat 9.x
 
-## 功能特点
+## 功能模块
 
 ### 1. 用户模块
-- 用户注册（用户名唯一性校验、密码MD5加密）
+- 用户注册（用户名、密码、昵称）
 - 用户登录/登出
-- 登录状态保持（Session）
+- 个人中心
 
 ### 2. 电影模块
 - 电影列表展示
-- 按类型、地区筛选（动态SQL）
-- 关键词搜索（标题/导演/演员）
-- 电影详情查看
+- 按类型筛选（剧情、科幻、动画、爱情等）
+- 按地区筛选（中国、美国、日本等）
+- 关键词搜索（支持电影名、导演、演员搜索）
+- 电影详情页
 
 ### 3. 评论模块
-- 发表评分（1-5星）和评论
-- 每个用户对每部电影只能评价一次（可更新）
-- 自动计算并更新电影平均评分
-
-### 4. 个人中心
-- 查看"我评价过的电影"
-- 查看"我的评论"
-- 删除自己的评论
+- 发表评分（1-5星）
+- 发表评论
+- 查看我的评价
+- 修改/删除评论
 
 ## 项目结构
 
 ```
 23202170505-SSM/
-├── pom.xml                          # Maven配置文件
+├── pom.xml                          # Maven配置
 ├── database/
-│   └── movie_community.sql          # 数据库初始化脚本
-├── src/main/
-│   ├── java/org/zhengyuxuan/
-│   │   ├── controller/              # 控制层（RESTful API）
-│   │   │   ├── UserController.java
-│   │   │   ├── MovieController.java
-│   │   │   ├── ReviewController.java
-│   │   │   └── PageController.java
-│   │   ├── service/                 # 业务逻辑层
-│   │   │   ├── UserService.java
-│   │   │   ├── MovieService.java
-│   │   │   ├── ReviewService.java
-│   │   │   └── impl/                # 实现类
-│   │   ├── mapper/                  # 持久层（MyBatis Mapper）
-│   │   ├── entity/                  # 实体类
-│   │   ├── vo/                      # 视图对象
-│   │   ├── util/                    # 工具类
-│   │   └── interceptor/             # 拦截器
-│   └── resources/
-│       ├── spring-context.xml       # Spring IoC配置
-│       ├── spring-mvc.xml           # SpringMVC配置
-│       ├── mybatis-config.xml       # MyBatis配置
-│       ├── db.properties            # 数据库连接配置
-│       ├── logback.xml              # 日志配置
-│       └── mapper/                  # MyBatis XML映射
+│   └── movie_community.sql          # 数据库脚本
+├── src/
+│   └── main/
+│       ├── java/org/zhengyuxuan/
+│       │   ├── controller/          # 控制器层
+│       │   ├── entity/              # 实体类
+│       │   ├── interceptor/         # 拦截器
+│       │   ├── mapper/              # MyBatis Mapper接口
+│       │   ├── service/             # 服务层接口
+│       │   │   └── impl/            # 服务层实现
+│       │   ├── util/                # 工具类
+│       │   └── vo/                  # 视图对象
+│       └── resources/
+│           ├── db.properties        # 数据库配置
+│           ├── mybatis-config.xml   # MyBatis配置
+│           ├── spring-context.xml   # Spring配置
+│           ├── spring-mvc.xml       # SpringMVC配置
+│           └── mapper/              # MyBatis映射文件
 └── web/
-    ├── WEB-INF/
-    │   ├── web.xml                  # Web应用配置
-    │   └── views/                   # JSP视图
-    │       ├── common/              # 公共组件
-    │       ├── movie/               # 电影相关页面
-    │       └── user/                # 用户相关页面
-    └── static/
-        └── css/style.css            # 样式文件
+    ├── index.jsp
+    ├── static/                      # 静态资源
+    │   ├── css/
+    │   └── images/
+    └── WEB-INF/
+        ├── web.xml
+        └── views/                   # JSP视图
+            ├── common/
+            ├── movie/
+            └── user/
 ```
 
-## 环境要求
+## 运行步骤
 
-- JDK 1.8+
+### 1. 环境准备
+- JDK 8+
 - Maven 3.6+
 - MySQL 8.0+
-- Tomcat 9.0+
+- Tomcat 9.x
 
-## 快速开始
-
-### 1. 数据库配置
-
-1. 创建MySQL数据库并执行初始化脚本：
-```sql
-source database/movie_community.sql
-```
+### 2. 数据库配置
+1. 创建数据库并执行SQL脚本：
+   ```sql
+   source database/movie_community.sql
+   ```
 
 2. 修改数据库连接配置 `src/main/resources/db.properties`：
-```properties
-jdbc.url=jdbc:mysql://localhost:3306/movie_community?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
-jdbc.username=root
-jdbc.password=你的密码
-```
+   ```properties
+   jdbc.username=你的数据库用户名
+   jdbc.password=你的数据库密码
+   ```
 
-### 2. 构建项目
+### 3. 在IDEA中运行
+1. 使用 IntelliJ IDEA 打开项目
+2. 等待 Maven 下载依赖
+3. 配置 Tomcat 服务器：
+   - Run > Edit Configurations
+   - 添加 Tomcat Server > Local
+   - 选择 Tomcat 9.x 安装目录
+   - Deployment 中添加 Artifact: `23202170505-SSM:war exploded`
+   - Application context 设置为 `/`
+4. 运行 Tomcat 服务器
+5. 访问 http://localhost:8080/
 
-```bash
-mvn clean package
-```
-
-### 3. 部署运行
-
-将生成的 `target/23202170505-SSM-1.0-SNAPSHOT.war` 部署到Tomcat，或直接在IDEA中配置Tomcat运行。
-
-### 4. 访问应用
-
-浏览器访问：`http://localhost:8080/23202170505-SSM/`
-
-### 5. 测试账号
-
-| 用户名 | 密码 | 说明 |
-|--------|------|------|
-| admin | 123456 | 管理员 |
-| zhangsan | 123456 | 测试用户 |
-| lisi | 123456 | 测试用户 |
+### 4. 测试账号
+- 用户名: `admin` / 密码: `123456`
+- 用户名: `zhangsan` / 密码: `123456`
+- 用户名: `lisi` / 密码: `123456`
 
 ## API接口
 
-### 用户接口
-| 接口 | 方法 | 说明 |
-|------|------|------|
-| /api/user/register | POST | 用户注册 |
-| /api/user/login | POST | 用户登录 |
-| /api/user/logout | GET | 用户登出 |
-| /api/user/current | GET | 获取当前用户 |
-| /api/user/check | GET | 检查用户名可用性 |
+### 用户相关
+- `POST /api/user/register` - 用户注册
+- `POST /api/user/login` - 用户登录
+- `GET /api/user/logout` - 用户登出
+- `GET /api/user/current` - 获取当前用户
+- `GET /api/user/check?username=xxx` - 检查用户名是否可用
 
-### 电影接口
-| 接口 | 方法 | 说明 |
-|------|------|------|
-| /api/movie/list | GET | 获取电影列表（支持筛选） |
-| /api/movie/{id} | GET | 获取电影详情 |
-| /api/movie/genres | GET | 获取所有类型 |
-| /api/movie/regions | GET | 获取所有地区 |
-| /api/movie/filters | GET | 获取筛选选项 |
+### 电影相关
+- `GET /api/movie/list` - 获取电影列表（支持筛选）
+- `GET /api/movie/{id}` - 获取电影详情
+- `GET /api/movie/genres` - 获取所有类型
+- `GET /api/movie/regions` - 获取所有地区
 
-### 评论接口
-| 接口 | 方法 | 说明 |
-|------|------|------|
-| /api/review/add | POST | 发表评论 |
-| /api/review/my | GET | 获取我的评论 |
-| /api/review/movie/{id} | GET | 获取电影评论 |
-| /api/review/{id} | DELETE | 删除评论 |
+### 评论相关
+- `POST /api/review/add` - 发表评论
+- `GET /api/review/my` - 获取我的评论
+- `GET /api/review/movie/{movieId}` - 获取电影评论
+- `DELETE /api/review/{id}` - 删除评论
 
-## 技术亮点
+## 注意事项
 
-1. **三层架构**：Controller → Service → Mapper，职责清晰
-2. **RESTful API**：规范的接口设计
-3. **动态SQL**：MyBatis实现灵活的条件查询
-4. **事务管理**：Spring声明式事务
-5. **登录拦截**：自定义拦截器保护需要登录的接口
-6. **统一响应**：ResultVO封装API返回结果
-7. **密码加密**：MD5加密存储密码
-8. **响应式布局**：CSS Grid/Flexbox实现自适应
+1. 确保 MySQL 服务已启动
+2. 数据库字符集建议使用 `utf8mb4`
+3. 首次运行需要先执行数据库脚本
+4. 如遇到乱码问题，请检查 Tomcat 和 IDEA 的编码设置
 
 ## 作者
 
-学号：23202170505
-
----
-
-*本项目为SSM框架学习实践项目*
+郑宇轩 - 学号: 23202170505
 
