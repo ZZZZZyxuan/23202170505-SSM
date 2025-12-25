@@ -737,6 +737,48 @@ a {
     font-size: 3rem;
 }
 
+/* 头像图片样式 */
+/* 导航栏小头像 - 32x32 */
+.user-avatar-img {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
+/* 个人中心大头像 - 100x100 */
+.profile-avatar-img {
+    width: 100px !important;
+    height: 100px !important;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* 评论区头像 - 40x40 */
+.reviewer-avatar-img {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+    flex-shrink: 0;
+}
+
 .profile-info {
     flex: 1;
 }

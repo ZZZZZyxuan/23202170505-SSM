@@ -122,7 +122,8 @@
                                 <div class="review-item">
                                     <div class="review-header">
                                         <div class="reviewer-info">
-                                            <span class="reviewer-avatar">👤</span>
+                                            <img src="${pageContext.request.contextPath}/static/images/avatars/default_avatar.png"
+                                                 alt="头像" class="reviewer-avatar-img">
                                             <span class="reviewer-name">${review.user.nickname}</span>
                                         </div>
                                         <div class="review-rating">

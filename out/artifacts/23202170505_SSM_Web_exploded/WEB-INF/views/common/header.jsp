@@ -13,7 +13,8 @@
                     <c:when test="${sessionScope.currentUser != null}">
                         <a href="${pageContext.request.contextPath}/user/profile" class="nav-link">个人中心</a>
                         <span class="user-info">
-                            <span class="user-avatar">👤</span>
+                            <img src="${pageContext.request.contextPath}/static/images/avatars/default_avatar.png"
+                                 alt="头像" class="user-avatar-img">
                             <span class="user-name">${sessionScope.currentUser.nickname}</span>
                         </span>
                         <a href="javascript:void(0)" onclick="logout()" class="nav-link logout-btn">退出</a>

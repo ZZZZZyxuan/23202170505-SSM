@@ -17,7 +17,8 @@
             <!-- 用户信息 -->
             <section class="profile-header">
                 <div class="profile-avatar">
-                    <span class="avatar-icon">👤</span>
+                    <img src="${pageContext.request.contextPath}/static/images/avatars/default_avatar.png"
+                         alt="头像" class="profile-avatar-img">
                 </div>
                 <div class="profile-info">
                     <h2 class="profile-name">${user.nickname}</h2>
