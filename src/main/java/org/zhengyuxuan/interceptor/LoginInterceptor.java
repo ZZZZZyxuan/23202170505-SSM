@@ -2,6 +2,7 @@ package org.zhengyuxuan.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.User;
 import org.zhengyuxuan.vo.ResultVO;
 
@@ -15,17 +16,18 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginInterceptor implements HandlerInterceptor {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private static final String AJAX_HEADER = "XMLHttpRequest";
+    private static final String JSON_CONTENT_TYPE = "application/json";
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("currentUser");
+        User user = (User) session.getAttribute(AppConstants.SESSION_CURRENT_USER);
 
         if (user == null) {
-            // 判断是否是AJAX请求
-            String xRequestedWith = request.getHeader("X-Requested-With");
-            if ("XMLHttpRequest".equals(xRequestedWith) || isJsonRequest(request)) {
+            if (isAjaxOrJsonRequest(request)) {
                 // AJAX请求，返回JSON
                 response.setContentType("application/json;charset=UTF-8");
                 response.getWriter().write(objectMapper.writeValueAsString(ResultVO.unauthorized()));
@@ -35,18 +37,20 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
             return false;
         }
-
         return true;
     }
 
     /**
-     * 判断是否是JSON请求
+     * 判断是否是AJAX或JSON请求
      */
-    private boolean isJsonRequest(HttpServletRequest request) {
+    private boolean isAjaxOrJsonRequest(HttpServletRequest request) {
+        String xRequestedWith = request.getHeader("X-Requested-With");
         String contentType = request.getContentType();
         String accept = request.getHeader("Accept");
-        return (contentType != null && contentType.contains("application/json")) ||
-               (accept != null && accept.contains("application/json"));
+
+        return AJAX_HEADER.equals(xRequestedWith) ||
+               (contentType != null && contentType.contains(JSON_CONTENT_TYPE)) ||
+               (accept != null && accept.contains(JSON_CONTENT_TYPE));
     }
 }
 

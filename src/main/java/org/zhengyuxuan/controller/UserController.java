@@ -3,12 +3,14 @@ package org.zhengyuxuan.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.User;
 import org.zhengyuxuan.service.UserService;
+import org.zhengyuxuan.util.ValidationUtil;
 import org.zhengyuxuan.vo.ResultVO;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -34,31 +36,27 @@ public class UserController {
         String nickname = params.get("nickname");
 
         // 参数校验
-        if (username == null || username.trim().isEmpty()) {
-            return ResultVO.error("用户名不能为空");
+        String usernameError = ValidationUtil.validateUsername(username);
+        if (usernameError != null) {
+            return ResultVO.error(usernameError);
         }
-        if (password == null || password.trim().isEmpty()) {
-            return ResultVO.error("密码不能为空");
-        }
-        if (username.length() < 3 || username.length() > 20) {
-            return ResultVO.error("用户名长度应为3-20个字符");
-        }
-        if (password.length() < 6) {
-            return ResultVO.error("密码长度不能少于6个字符");
+        String passwordError = ValidationUtil.validatePassword(password);
+        if (passwordError != null) {
+            return ResultVO.error(passwordError);
         }
 
         // 检查用户名是否存在
         if (userService.isUsernameExists(username)) {
-            return ResultVO.error("用户名已存在");
+            return ResultVO.error(AppConstants.ERR_USERNAME_EXISTS);
         }
 
         // 注册用户
         User user = userService.register(username, password, nickname);
         if (user != null) {
             user.setPassword(null); // 不返回密码
-            return ResultVO.success("注册成功", user);
+            return ResultVO.success(AppConstants.MSG_REGISTER_SUCCESS, user);
         }
-        return ResultVO.error("注册失败，请稍后重试");
+        return ResultVO.error(AppConstants.ERR_REGISTER_FAILED);
     }
 
     /**
@@ -72,21 +70,21 @@ public class UserController {
         String password = params.get("password");
 
         // 参数校验
-        if (username == null || username.trim().isEmpty()) {
-            return ResultVO.error("用户名不能为空");
+        if (ValidationUtil.isBlank(username)) {
+            return ResultVO.error(AppConstants.ERR_USERNAME_EMPTY);
         }
-        if (password == null || password.trim().isEmpty()) {
-            return ResultVO.error("密码不能为空");
+        if (ValidationUtil.isBlank(password)) {
+            return ResultVO.error(AppConstants.ERR_PASSWORD_EMPTY);
         }
 
         // 登录验证
         User user = userService.login(username, password);
         if (user != null) {
             user.setPassword(null); // 不返回密码
-            session.setAttribute("currentUser", user);
-            return ResultVO.success("登录成功", user);
+            session.setAttribute(AppConstants.SESSION_CURRENT_USER, user);
+            return ResultVO.success(AppConstants.MSG_LOGIN_SUCCESS, user);
         }
-        return ResultVO.error("用户名或密码错误");
+        return ResultVO.error(AppConstants.ERR_LOGIN_FAILED);
     }
 
     /**
@@ -96,9 +94,9 @@ public class UserController {
     @GetMapping("/logout")
     @ResponseBody
     public ResultVO<Void> logout(HttpSession session) {
-        session.removeAttribute("currentUser");
+        session.removeAttribute(AppConstants.SESSION_CURRENT_USER);
         session.invalidate();
-        return ResultVO.success("登出成功", null);
+        return ResultVO.success(AppConstants.MSG_LOGOUT_SUCCESS, null);
     }
 
     /**
@@ -108,11 +106,11 @@ public class UserController {
     @GetMapping("/current")
     @ResponseBody
     public ResultVO<User> getCurrentUser(HttpSession session) {
-        User user = (User) session.getAttribute("currentUser");
+        User user = (User) session.getAttribute(AppConstants.SESSION_CURRENT_USER);
         if (user != null) {
             return ResultVO.success(user);
         }
-        return ResultVO.error(401, "未登录");
+        return ResultVO.error(AppConstants.CODE_UNAUTHORIZED, AppConstants.MSG_UNAUTHORIZED);
     }
 
     /**
@@ -122,9 +120,8 @@ public class UserController {
     @GetMapping("/check")
     @ResponseBody
     public ResultVO<Map<String, Boolean>> checkUsername(@RequestParam String username) {
-        Map<String, Boolean> result = new HashMap<>();
-        result.put("available", !userService.isUsernameExists(username));
-        return ResultVO.success(result);
+        boolean available = !userService.isUsernameExists(username);
+        return ResultVO.success(Collections.singletonMap("available", available));
     }
 }
 

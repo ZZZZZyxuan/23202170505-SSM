@@ -3,8 +3,8 @@ package org.zhengyuxuan.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.Movie;
-import org.zhengyuxuan.entity.Review;
 import org.zhengyuxuan.service.MovieService;
 import org.zhengyuxuan.service.ReviewService;
 import org.zhengyuxuan.vo.ResultVO;
@@ -37,8 +37,7 @@ public class MovieController {
             @RequestParam(required = false) String genre,
             @RequestParam(required = false) String region,
             @RequestParam(required = false) String keyword) {
-        List<Movie> movies = movieService.findByCondition(genre, region, keyword);
-        return ResultVO.success(movies);
+        return ResultVO.success(movieService.findByCondition(genre, region, keyword));
     }
 
     /**
@@ -50,16 +49,12 @@ public class MovieController {
     public ResultVO<Map<String, Object>> getMovieDetail(@PathVariable Integer id) {
         Movie movie = movieService.findById(id);
         if (movie == null) {
-            return ResultVO.error("电影不存在");
+            return ResultVO.error(AppConstants.ERR_MOVIE_NOT_FOUND);
         }
 
-        // 获取电影的评论列表
-        List<Review> reviews = reviewService.findByMovieId(id);
-
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<>(4);
         data.put("movie", movie);
-        data.put("reviews", reviews);
-
+        data.put("reviews", reviewService.findByMovieId(id));
         return ResultVO.success(data);
     }
 
@@ -70,8 +65,7 @@ public class MovieController {
     @GetMapping("/genres")
     @ResponseBody
     public ResultVO<List<String>> getAllGenres() {
-        List<String> genres = movieService.getAllGenres();
-        return ResultVO.success(genres);
+        return ResultVO.success(movieService.getAllGenres());
     }
 
     /**
@@ -81,8 +75,7 @@ public class MovieController {
     @GetMapping("/regions")
     @ResponseBody
     public ResultVO<List<String>> getAllRegions() {
-        List<String> regions = movieService.getAllRegions();
-        return ResultVO.success(regions);
+        return ResultVO.success(movieService.getAllRegions());
     }
 
     /**
@@ -92,7 +85,7 @@ public class MovieController {
     @GetMapping("/filters")
     @ResponseBody
     public ResultVO<Map<String, List<String>>> getFilters() {
-        Map<String, List<String>> filters = new HashMap<>();
+        Map<String, List<String>> filters = new HashMap<>(4);
         filters.put("genres", movieService.getAllGenres());
         filters.put("regions", movieService.getAllRegions());
         return ResultVO.success(filters);

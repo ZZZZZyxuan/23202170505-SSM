@@ -11,6 +11,7 @@ import org.zhengyuxuan.service.ReviewService;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 评论服务实现类
@@ -27,25 +28,22 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     @Transactional
     public Review addReview(Integer userId, Integer movieId, Integer rating, String content) {
-        // 检查是否已评价过
         Review existingReview = reviewMapper.selectByUserAndMovie(userId, movieId);
+
+        Review review;
         if (existingReview != null) {
-            // 如果已存在，则更新
+            // 更新已存在的评论
             existingReview.setRating(rating);
             existingReview.setContent(content);
             reviewMapper.update(existingReview);
-            // 更新电影评分
-            updateMovieRating(movieId);
-            return existingReview;
+            review = existingReview;
+        } else {
+            // 创建新评论
+            review = new Review(userId, movieId, rating, content);
+            reviewMapper.insert(review);
         }
 
-        // 创建新评论
-        Review review = new Review(userId, movieId, rating, content);
-        reviewMapper.insert(review);
-
-        // 更新电影评分
         updateMovieRating(movieId);
-
         return review;
     }
 
@@ -80,10 +78,7 @@ public class ReviewServiceImpl implements ReviewService {
         review.setRating(rating);
         review.setContent(content);
         reviewMapper.update(review);
-
-        // 更新电影评分
         updateMovieRating(review.getMovieId());
-
         return review;
     }
 
@@ -96,10 +91,7 @@ public class ReviewServiceImpl implements ReviewService {
         }
 
         Integer movieId = review.getMovieId();
-        int result = reviewMapper.delete(reviewId);
-
-        if (result > 0) {
-            // 更新电影评分
+        if (reviewMapper.delete(reviewId) > 0) {
             updateMovieRating(movieId);
             return true;
         }
@@ -111,17 +103,9 @@ public class ReviewServiceImpl implements ReviewService {
      * @param movieId 电影ID
      */
     private void updateMovieRating(Integer movieId) {
-        Double avgRating = reviewMapper.calculateAvgRating(movieId);
-        Integer ratingCount = reviewMapper.countByMovieId(movieId);
+        Double avgRating = Optional.ofNullable(reviewMapper.calculateAvgRating(movieId)).orElse(0.0);
+        Integer ratingCount = Optional.ofNullable(reviewMapper.countByMovieId(movieId)).orElse(0);
 
-        if (avgRating == null) {
-            avgRating = 0.0;
-        }
-        if (ratingCount == null) {
-            ratingCount = 0;
-        }
-
-        // 保留一位小数
         BigDecimal avgRatingDecimal = BigDecimal.valueOf(avgRating)
                 .setScale(1, RoundingMode.HALF_UP);
 

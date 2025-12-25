@@ -1,5 +1,7 @@
 package org.zhengyuxuan.vo;
 
+import org.zhengyuxuan.constant.AppConstants;
+
 /**
  * 统一响应结果类
  * @param <T> 数据类型
@@ -33,28 +35,28 @@ public class ResultVO<T> {
      * 成功返回结果
      */
     public static <T> ResultVO<T> success() {
-        return new ResultVO<>(200, "操作成功");
+        return new ResultVO<>(AppConstants.CODE_SUCCESS, AppConstants.MSG_SUCCESS);
     }
 
     /**
      * 成功返回结果（带数据）
      */
     public static <T> ResultVO<T> success(T data) {
-        return new ResultVO<>(200, "操作成功", data);
+        return new ResultVO<>(AppConstants.CODE_SUCCESS, AppConstants.MSG_SUCCESS, data);
     }
 
     /**
      * 成功返回结果（带消息和数据）
      */
     public static <T> ResultVO<T> success(String message, T data) {
-        return new ResultVO<>(200, message, data);
+        return new ResultVO<>(AppConstants.CODE_SUCCESS, message, data);
     }
 
     /**
      * 失败返回结果
      */
     public static <T> ResultVO<T> error(String message) {
-        return new ResultVO<>(500, message);
+        return new ResultVO<>(AppConstants.CODE_ERROR, message);
     }
 
     /**
@@ -68,7 +70,7 @@ public class ResultVO<T> {
      * 未登录返回结果
      */
     public static <T> ResultVO<T> unauthorized() {
-        return new ResultVO<>(401, "请先登录");
+        return new ResultVO<>(AppConstants.CODE_UNAUTHORIZED, AppConstants.MSG_UNAUTHORIZED);
     }
 
     public Integer getCode() {

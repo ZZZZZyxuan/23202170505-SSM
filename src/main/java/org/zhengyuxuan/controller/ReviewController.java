@@ -3,9 +3,11 @@ package org.zhengyuxuan.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.Review;
 import org.zhengyuxuan.entity.User;
 import org.zhengyuxuan.service.ReviewService;
+import org.zhengyuxuan.util.ValidationUtil;
 import org.zhengyuxuan.vo.ResultVO;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +32,7 @@ public class ReviewController {
     @PostMapping("/add")
     @ResponseBody
     public ResultVO<Review> addReview(@RequestBody Map<String, Object> params, HttpSession session) {
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return ResultVO.unauthorized();
         }
@@ -41,24 +43,23 @@ public class ReviewController {
 
         // 参数校验
         if (movieId == null) {
-            return ResultVO.error("电影ID不能为空");
+            return ResultVO.error(AppConstants.ERR_MOVIE_ID_EMPTY);
         }
-        if (rating == null || rating < 1 || rating > 5) {
-            return ResultVO.error("评分必须在1-5之间");
+        String ratingError = ValidationUtil.validateRating(rating);
+        if (ratingError != null) {
+            return ResultVO.error(ratingError);
         }
-        if (content == null || content.trim().isEmpty()) {
-            return ResultVO.error("评论内容不能为空");
-        }
-        if (content.length() > 500) {
-            return ResultVO.error("评论内容不能超过500字");
+        String contentError = ValidationUtil.validateReviewContent(content);
+        if (contentError != null) {
+            return ResultVO.error(contentError);
         }
 
         // 添加评论
         Review review = reviewService.addReview(currentUser.getId(), movieId, rating, content);
         if (review != null) {
-            return ResultVO.success("评论成功", review);
+            return ResultVO.success(AppConstants.MSG_REVIEW_SUCCESS, review);
         }
-        return ResultVO.error("评论失败，请稍后重试");
+        return ResultVO.error(AppConstants.ERR_REVIEW_FAILED);
     }
 
     /**
@@ -68,13 +69,11 @@ public class ReviewController {
     @GetMapping("/my")
     @ResponseBody
     public ResultVO<List<Review>> getMyReviews(HttpSession session) {
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return ResultVO.unauthorized();
         }
-
-        List<Review> reviews = reviewService.findByUserId(currentUser.getId());
-        return ResultVO.success(reviews);
+        return ResultVO.success(reviewService.findByUserId(currentUser.getId()));
     }
 
     /**
@@ -84,8 +83,7 @@ public class ReviewController {
     @GetMapping("/movie/{movieId}")
     @ResponseBody
     public ResultVO<List<Review>> getMovieReviews(@PathVariable Integer movieId) {
-        List<Review> reviews = reviewService.findByMovieId(movieId);
-        return ResultVO.success(reviews);
+        return ResultVO.success(reviewService.findByMovieId(movieId));
     }
 
     /**
@@ -95,16 +93,12 @@ public class ReviewController {
     @GetMapping("/check/{movieId}")
     @ResponseBody
     public ResultVO<Review> checkReviewed(@PathVariable Integer movieId, HttpSession session) {
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = getCurrentUser(session);
         if (currentUser == null) {
-            return ResultVO.error(401, "未登录");
+            return ResultVO.error(AppConstants.CODE_UNAUTHORIZED, AppConstants.MSG_UNAUTHORIZED);
         }
-
         Review review = reviewService.findByUserAndMovie(currentUser.getId(), movieId);
-        if (review != null) {
-            return ResultVO.success(review);
-        }
-        return ResultVO.success(null);
+        return ResultVO.success(review);
     }
 
     /**
@@ -114,16 +108,23 @@ public class ReviewController {
     @DeleteMapping("/{id}")
     @ResponseBody
     public ResultVO<Void> deleteReview(@PathVariable Integer id, HttpSession session) {
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return ResultVO.unauthorized();
         }
 
         boolean success = reviewService.deleteReview(id, currentUser.getId());
         if (success) {
-            return ResultVO.success("删除成功", null);
+            return ResultVO.success(AppConstants.MSG_DELETE_SUCCESS, null);
         }
-        return ResultVO.error("删除失败，可能没有权限");
+        return ResultVO.error(AppConstants.ERR_DELETE_FAILED);
+    }
+
+    /**
+     * 从Session中获取当前用户
+     */
+    private User getCurrentUser(HttpSession session) {
+        return (User) session.getAttribute(AppConstants.SESSION_CURRENT_USER);
     }
 }
 

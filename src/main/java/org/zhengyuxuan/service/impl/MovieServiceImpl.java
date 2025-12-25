@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.zhengyuxuan.entity.Movie;
 import org.zhengyuxuan.mapper.MovieMapper;
 import org.zhengyuxuan.service.MovieService;
+import org.zhengyuxuan.util.ValidationUtil;
 
 import java.util.List;
 
@@ -29,17 +30,12 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> findByCondition(String genre, String region, String keyword) {
-        // 处理空字符串为null，便于动态SQL判断
-        if (genre != null && genre.trim().isEmpty()) {
-            genre = null;
-        }
-        if (region != null && region.trim().isEmpty()) {
-            region = null;
-        }
-        if (keyword != null && keyword.trim().isEmpty()) {
-            keyword = null;
-        }
-        return movieMapper.selectByCondition(genre, region, keyword);
+        // 使用工具类处理空字符串为null，便于动态SQL判断
+        return movieMapper.selectByCondition(
+                ValidationUtil.emptyToNull(genre),
+                ValidationUtil.emptyToNull(region),
+                ValidationUtil.emptyToNull(keyword)
+        );
     }
 
     @Override

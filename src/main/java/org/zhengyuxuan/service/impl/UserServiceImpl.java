@@ -3,6 +3,7 @@ package org.zhengyuxuan.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.User;
 import org.zhengyuxuan.mapper.UserMapper;
 import org.zhengyuxuan.service.UserService;
@@ -28,28 +29,18 @@ public class UserServiceImpl implements UserService {
         // 创建用户对象
         User user = new User();
         user.setUsername(username);
-        user.setPassword(PasswordUtil.md5(password)); // MD5加密密码
-        user.setNickname(nickname != null ? nickname : username);
-        user.setAvatar("/static/images/default-avatar.png");
+        user.setPassword(PasswordUtil.md5(password));
+        user.setNickname(nickname != null && !nickname.trim().isEmpty() ? nickname : username);
+        user.setAvatar(AppConstants.DEFAULT_AVATAR);
 
         // 插入数据库
-        int result = userMapper.insert(user);
-        if (result > 0) {
-            return user;
-        }
-        return null;
+        return userMapper.insert(user) > 0 ? user : null;
     }
 
     @Override
     public User login(String username, String password) {
-        // 根据用户名查询用户
         User user = userMapper.selectByUsername(username);
-        if (user == null) {
-            return null;
-        }
-
-        // 验证密码
-        if (PasswordUtil.matches(password, user.getPassword())) {
+        if (user != null && PasswordUtil.matches(password, user.getPassword())) {
             return user;
         }
         return null;

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.vo.ResultVO;
 
 /**
@@ -43,7 +44,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public ResultVO<Void> handleException(Exception e) {
         logger.error("系统异常: ", e);
-        return ResultVO.error("系统繁忙，请稍后重试");
+        return ResultVO.error(AppConstants.MSG_SYSTEM_ERROR);
     }
 }
 

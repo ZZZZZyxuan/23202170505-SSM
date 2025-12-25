@@ -6,14 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zhengyuxuan.constant.AppConstants;
 import org.zhengyuxuan.entity.Movie;
-import org.zhengyuxuan.entity.Review;
 import org.zhengyuxuan.entity.User;
 import org.zhengyuxuan.service.MovieService;
 import org.zhengyuxuan.service.ReviewService;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * 页面控制器
@@ -38,11 +37,8 @@ public class PageController {
             @RequestParam(required = false) String keyword,
             Model model) {
 
-        // 获取电影列表
-        List<Movie> movies = movieService.findByCondition(genre, region, keyword);
-        model.addAttribute("movies", movies);
-
-        // 获取筛选选项
+        // 获取电影列表和筛选选项
+        model.addAttribute("movies", movieService.findByCondition(genre, region, keyword));
         model.addAttribute("genres", movieService.getAllGenres());
         model.addAttribute("regions", movieService.getAllRegions());
 
@@ -75,16 +71,13 @@ public class PageController {
      */
     @GetMapping("/user/profile")
     public String profilePage(HttpSession session, Model model) {
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return "redirect:/user/login";
         }
 
-        // 获取我的评论
-        List<Review> myReviews = reviewService.findByUserId(currentUser.getId());
-        model.addAttribute("myReviews", myReviews);
+        model.addAttribute("myReviews", reviewService.findByUserId(currentUser.getId()));
         model.addAttribute("user", currentUser);
-
         return "user/profile";
     }
 
@@ -98,19 +91,23 @@ public class PageController {
             return "redirect:/";
         }
 
-        // 获取评论列表
-        List<Review> reviews = reviewService.findByMovieId(id);
         model.addAttribute("movie", movie);
-        model.addAttribute("reviews", reviews);
+        model.addAttribute("reviews", reviewService.findByMovieId(id));
 
         // 检查当前用户是否已评价
-        User currentUser = (User) session.getAttribute("currentUser");
+        User currentUser = getCurrentUser(session);
         if (currentUser != null) {
-            Review myReview = reviewService.findByUserAndMovie(currentUser.getId(), id);
-            model.addAttribute("myReview", myReview);
+            model.addAttribute("myReview", reviewService.findByUserAndMovie(currentUser.getId(), id));
         }
 
         return "movie/detail";
+    }
+
+    /**
+     * 从Session中获取当前用户
+     */
+    private User getCurrentUser(HttpSession session) {
+        return (User) session.getAttribute(AppConstants.SESSION_CURRENT_USER);
     }
 }
 

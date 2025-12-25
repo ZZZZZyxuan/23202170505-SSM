@@ -11,8 +11,8 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 扫描Controller层组件 -->
-    <context:component-scan base-package="org.zhengyuxuan.controller"/>
+    <!-- 扫描Controller层组件和异常处理器 -->
+    <context:component-scan base-package="org.zhengyuxuan.controller, org.zhengyuxuan.exception"/>
 
     <!-- 开启SpringMVC注解驱动 -->
     <mvc:annotation-driven>
