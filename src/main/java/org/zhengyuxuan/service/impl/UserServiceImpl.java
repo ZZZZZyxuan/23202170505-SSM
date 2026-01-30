@@ -9,9 +9,6 @@ import org.zhengyuxuan.service.AppConstants;
 import org.zhengyuxuan.service.PasswordUtil;
 import org.zhengyuxuan.service.UserService;
 
-/**
- * 用户服务实现类
- */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,44 +17,41 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User register(String username, String password, String nickname) {
-        // 检查用户名是否已存在
-        if (isUsernameExists(username)) {
+    public User register(String username, String password, String nickname) { // 用户注册
+        if (isUsernameExists(username)) { // 检查用户名是否存在
             return null;
         }
 
-        // 创建用户对象
-        User user = new User();
+        User user = new User(); // 创建用户对象
         user.setUsername(username);
-        user.setPassword(PasswordUtil.md5(password));
-        user.setNickname(nickname != null && !nickname.trim().isEmpty() ? nickname : username);
-        user.setAvatar(AppConstants.DEFAULT_AVATAR);
+        user.setPassword(PasswordUtil.md5(password)); // MD5加密密码
+        user.setNickname(nickname != null && !nickname.trim().isEmpty() ? nickname : username); // 设置昵称
+        user.setAvatar(AppConstants.DEFAULT_AVATAR); // 设置默认头像
 
-        // 插入数据库
-        return userMapper.insert(user) > 0 ? user : null;
+        return userMapper.insert(user) > 0 ? user : null; // 插入数据库
     }
 
     @Override
-    public User login(String username, String password) {
-        User user = userMapper.selectByUsername(username);
-        if (user != null && PasswordUtil.matches(password, user.getPassword())) {
+    public User login(String username, String password) { // 用户登录
+        User user = userMapper.selectByUsername(username); // 查询用户
+        if (user != null && PasswordUtil.matches(password, user.getPassword())) { // 验证密码
             return user;
         }
         return null;
     }
 
     @Override
-    public User findById(Integer id) {
+    public User findById(Integer id) { // 根据ID查询用户
         return userMapper.selectById(id);
     }
 
     @Override
-    public User findByUsername(String username) {
+    public User findByUsername(String username) { // 根据用户名查询用户
         return userMapper.selectByUsername(username);
     }
 
     @Override
-    public boolean isUsernameExists(String username) {
+    public boolean isUsernameExists(String username) { // 检查用户名是否存在
         return userMapper.selectByUsername(username) != null;
     }
 }

@@ -3,37 +3,14 @@ package org.zhengyuxuan.dao;
 import org.apache.ibatis.annotations.Param;
 import org.zhengyuxuan.entity.User;
 
-/**
- * 用户Mapper接口
- */
-public interface UserMapper {
+public interface UserMapper { // 用户数据访问接口
 
-    /**
-     * 根据ID查询用户
-     * @param id 用户ID
-     * @return 用户信息
-     */
-    User selectById(@Param("id") Integer id);
+    User selectById(@Param("id") Integer id); // 根据ID查询
 
-    /**
-     * 根据用户名查询用户
-     * @param username 用户名
-     * @return 用户信息
-     */
-    User selectByUsername(@Param("username") String username);
+    User selectByUsername(@Param("username") String username); // 根据用户名查询
 
-    /**
-     * 插入新用户
-     * @param user 用户信息
-     * @return 影响行数
-     */
-    int insert(User user);
+    int insert(User user); // 插入用户
 
-    /**
-     * 更新用户信息
-     * @param user 用户信息
-     * @return 影响行数
-     */
-    int update(User user);
+    int update(User user); // 更新用户
 }
 

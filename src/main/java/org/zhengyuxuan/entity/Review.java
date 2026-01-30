@@ -3,37 +3,18 @@ package org.zhengyuxuan.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 评论评分实体类
- * 对应数据库表 t_review
- */
-public class Review implements Serializable {
+public class Review implements Serializable { // 评论实体类
 
     private static final long serialVersionUID = 1L;
 
-    /** 评论ID */
-    private Integer id;
-
-    /** 用户ID */
-    private Integer userId;
-
-    /** 电影ID */
-    private Integer movieId;
-
-    /** 评分(1-5星) */
-    private Integer rating;
-
-    /** 评论内容 */
-    private String content;
-
-    /** 评论时间 */
-    private Date createTime;
-
-    /** 关联的用户信息（非数据库字段） */
-    private User user;
-
-    /** 关联的电影信息（非数据库字段） */
-    private Movie movie;
+    private Integer id; // 评论ID
+    private Integer userId; // 用户ID
+    private Integer movieId; // 电影ID
+    private Integer rating; // 评分(1-5)
+    private String content; // 评论内容
+    private Date createTime; // 评论时间
+    private User user; // 关联用户信息
+    private Movie movie; // 关联电影信息
 
     public Review() {
     }

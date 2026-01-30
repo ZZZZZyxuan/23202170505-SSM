@@ -4,49 +4,22 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * 电影实体类
- * 对应数据库表 t_movie
- */
-public class Movie implements Serializable {
+public class Movie implements Serializable { // 电影实体类
 
     private static final long serialVersionUID = 1L;
 
-    /** 电影ID */
-    private Integer id;
-
-    /** 电影名称 */
-    private String title;
-
-    /** 导演 */
-    private String director;
-
-    /** 主演 */
-    private String actors;
-
-    /** 类型 */
-    private String genre;
-
-    /** 地区 */
-    private String region;
-
-    /** 上映日期 */
-    private Date releaseDate;
-
-    /** 片长(分钟) */
-    private Integer duration;
-
-    /** 海报图片 */
-    private String poster;
-
-    /** 剧情简介 */
-    private String synopsis;
-
-    /** 平均评分 */
-    private BigDecimal avgRating;
-
-    /** 评分人数 */
-    private Integer ratingCount;
+    private Integer id; // 电影ID
+    private String title; // 电影名称
+    private String director; // 导演
+    private String actors; // 主演
+    private String genre; // 类型
+    private String region; // 地区
+    private Date releaseDate; // 上映日期
+    private Integer duration; // 片长(分钟)
+    private String poster; // 海报图片
+    private String synopsis; // 剧情简介
+    private BigDecimal avgRating; // 平均评分
+    private Integer ratingCount; // 评分人数
 
     public Movie() {
     }

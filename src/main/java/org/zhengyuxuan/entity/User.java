@@ -3,31 +3,16 @@ package org.zhengyuxuan.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 用户实体类
- * 对应数据库表 t_user
- */
-public class User implements Serializable {
+public class User implements Serializable { // 用户实体类
 
     private static final long serialVersionUID = 1L;
 
-    /** 用户ID */
-    private Integer id;
-
-    /** 用户名 */
-    private String username;
-
-    /** 密码 */
-    private String password;
-
-    /** 昵称 */
-    private String nickname;
-
-    /** 头像 */
-    private String avatar;
-
-    /** 注册时间 */
-    private Date createTime;
+    private Integer id; // 用户ID
+    private String username; // 用户名
+    private String password; // 密码
+    private String nickname; // 昵称
+    private String avatar; // 头像
+    private Date createTime; // 注册时间
 
     public User() {
     }

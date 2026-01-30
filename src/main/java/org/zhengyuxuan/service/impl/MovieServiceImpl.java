@@ -9,9 +9,6 @@ import org.zhengyuxuan.service.ValidationUtil;
 
 import java.util.List;
 
-/**
- * 电影服务实现类
- */
 @Service
 public class MovieServiceImpl implements MovieService {
 
@@ -19,32 +16,31 @@ public class MovieServiceImpl implements MovieService {
     private MovieMapper movieMapper;
 
     @Override
-    public List<Movie> findAll() {
+    public List<Movie> findAll() { // 查询所有电影
         return movieMapper.selectAll();
     }
 
     @Override
-    public Movie findById(Integer id) {
+    public Movie findById(Integer id) { // 根据ID查询电影
         return movieMapper.selectById(id);
     }
 
     @Override
-    public List<Movie> findByCondition(String genre, String region, String keyword) {
-        // 使用工具类处理空字符串为null，便于动态SQL判断
+    public List<Movie> findByCondition(String genre, String region, String keyword) { // 条件查询电影
         return movieMapper.selectByCondition(
-                ValidationUtil.emptyToNull(genre),
+                ValidationUtil.emptyToNull(genre), // 空字符串转null
                 ValidationUtil.emptyToNull(region),
                 ValidationUtil.emptyToNull(keyword)
         );
     }
 
     @Override
-    public List<String> getAllGenres() {
+    public List<String> getAllGenres() { // 获取所有电影类型
         return movieMapper.selectAllGenres();
     }
 
     @Override
-    public List<String> getAllRegions() {
+    public List<String> getAllRegions() { // 获取所有电影地区
         return movieMapper.selectAllRegions();
     }
 }

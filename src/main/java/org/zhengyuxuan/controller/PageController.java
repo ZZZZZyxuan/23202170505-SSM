@@ -14,10 +14,6 @@ import org.zhengyuxuan.service.ReviewService;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * 页面控制器
- * 处理页面跳转请求
- */
 @Controller
 public class PageController {
 
@@ -27,86 +23,65 @@ public class PageController {
     @Autowired
     private ReviewService reviewService;
 
-    /**
-     * 首页 - 电影列表
-     */
     @GetMapping({"/", "/index"})
-    public String index(
+    public String index( // 首页-电影列表
             @RequestParam(required = false) String genre,
             @RequestParam(required = false) String region,
             @RequestParam(required = false) String keyword,
             Model model) {
 
-        // 获取电影列表和筛选选项
-        model.addAttribute("movies", movieService.findByCondition(genre, region, keyword));
-        model.addAttribute("genres", movieService.getAllGenres());
-        model.addAttribute("regions", movieService.getAllRegions());
+        model.addAttribute("movies", movieService.findByCondition(genre, region, keyword)); // 电影列表
+        model.addAttribute("genres", movieService.getAllGenres()); // 所有类型
+        model.addAttribute("regions", movieService.getAllRegions()); // 所有地区
 
-        // 当前筛选条件
-        model.addAttribute("currentGenre", genre);
+        model.addAttribute("currentGenre", genre); // 当前筛选条件
         model.addAttribute("currentRegion", region);
         model.addAttribute("keyword", keyword);
 
         return "movie/list";
     }
 
-    /**
-     * 登录页面
-     */
     @GetMapping("/user/login")
-    public String loginPage() {
+    public String loginPage() { // 登录页面
         return "user/login";
     }
 
-    /**
-     * 注册页面
-     */
     @GetMapping("/user/register")
-    public String registerPage() {
+    public String registerPage() { // 注册页面
         return "user/register";
     }
 
-    /**
-     * 个人中心页面
-     */
     @GetMapping("/user/profile")
-    public String profilePage(HttpSession session, Model model) {
+    public String profilePage(HttpSession session, Model model) { // 个人中心页面
         User currentUser = getCurrentUser(session);
-        if (currentUser == null) {
+        if (currentUser == null) { // 登录检查
             return "redirect:/user/login";
         }
 
-        model.addAttribute("myReviews", reviewService.findByUserId(currentUser.getId()));
+        model.addAttribute("myReviews", reviewService.findByUserId(currentUser.getId())); // 我的评论
         model.addAttribute("user", currentUser);
         return "user/profile";
     }
 
-    /**
-     * 电影详情页面
-     */
     @GetMapping("/movie/{id}")
-    public String movieDetail(@PathVariable Integer id, Model model, HttpSession session) {
+    public String movieDetail(@PathVariable Integer id, Model model, HttpSession session) { // 电影详情页面
         Movie movie = movieService.findById(id);
-        if (movie == null) {
+        if (movie == null) { // 电影不存在则跳转首页
             return "redirect:/";
         }
 
-        model.addAttribute("movie", movie);
-        model.addAttribute("reviews", reviewService.findByMovieId(id));
+        model.addAttribute("movie", movie); // 电影信息
+        model.addAttribute("reviews", reviewService.findByMovieId(id)); // 电影评论
 
-        // 检查当前用户是否已评价
         User currentUser = getCurrentUser(session);
-        if (currentUser != null) {
+        if (currentUser != null) { // 检查当前用户是否已评价
             model.addAttribute("myReview", reviewService.findByUserAndMovie(currentUser.getId(), id));
         }
 
         return "movie/detail";
     }
 
-    /**
-     * 从Session中获取当前用户
-     */
-    private User getCurrentUser(HttpSession session) {
+    private User getCurrentUser(HttpSession session) { // 从Session获取当前用户
         return (User) session.getAttribute(AppConstants.SESSION_CURRENT_USER);
     }
 }

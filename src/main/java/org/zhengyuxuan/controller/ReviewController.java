@@ -14,10 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 评论控制器
- * 处理评论评分相关请求
- */
 @Controller
 @RequestMapping("/api/review")
 public class ReviewController {
@@ -25,15 +21,11 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    /**
-     * 发表评论评分
-     * POST /api/review/add
-     */
     @PostMapping("/add")
     @ResponseBody
-    public ResultVO<Review> addReview(@RequestBody Map<String, Object> params, HttpSession session) {
+    public ResultVO<Review> addReview(@RequestBody Map<String, Object> params, HttpSession session) { // 发表评论接口
         User currentUser = getCurrentUser(session);
-        if (currentUser == null) {
+        if (currentUser == null) { // 登录检查
             return ResultVO.unauthorized();
         }
 
@@ -41,8 +33,7 @@ public class ReviewController {
         Integer rating = (Integer) params.get("rating");
         String content = (String) params.get("content");
 
-        // 参数校验
-        if (movieId == null) {
+        if (movieId == null) { // 参数校验
             return ResultVO.error(AppConstants.ERR_MOVIE_ID_EMPTY);
         }
         String ratingError = ValidationUtil.validateRating(rating);
@@ -54,21 +45,16 @@ public class ReviewController {
             return ResultVO.error(contentError);
         }
 
-        // 添加评论
-        Review review = reviewService.addReview(currentUser.getId(), movieId, rating, content);
+        Review review = reviewService.addReview(currentUser.getId(), movieId, rating, content); // 添加评论
         if (review != null) {
             return ResultVO.success(AppConstants.MSG_REVIEW_SUCCESS, review);
         }
         return ResultVO.error(AppConstants.ERR_REVIEW_FAILED);
     }
 
-    /**
-     * 获取我的评论列表
-     * GET /api/review/my
-     */
     @GetMapping("/my")
     @ResponseBody
-    public ResultVO<List<Review>> getMyReviews(HttpSession session) {
+    public ResultVO<List<Review>> getMyReviews(HttpSession session) { // 获取我的评论列表
         User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return ResultVO.unauthorized();
@@ -76,23 +62,15 @@ public class ReviewController {
         return ResultVO.success(reviewService.findByUserId(currentUser.getId()));
     }
 
-    /**
-     * 获取电影的评论列表
-     * GET /api/review/movie/{movieId}
-     */
     @GetMapping("/movie/{movieId}")
     @ResponseBody
-    public ResultVO<List<Review>> getMovieReviews(@PathVariable Integer movieId) {
+    public ResultVO<List<Review>> getMovieReviews(@PathVariable Integer movieId) { // 获取电影的评论列表
         return ResultVO.success(reviewService.findByMovieId(movieId));
     }
 
-    /**
-     * 检查是否已评价过该电影
-     * GET /api/review/check/{movieId}
-     */
     @GetMapping("/check/{movieId}")
     @ResponseBody
-    public ResultVO<Review> checkReviewed(@PathVariable Integer movieId, HttpSession session) {
+    public ResultVO<Review> checkReviewed(@PathVariable Integer movieId, HttpSession session) { // 检查是否已评价
         User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return ResultVO.error(AppConstants.CODE_UNAUTHORIZED, AppConstants.MSG_UNAUTHORIZED);
@@ -101,29 +79,22 @@ public class ReviewController {
         return ResultVO.success(review);
     }
 
-    /**
-     * 删除评论
-     * DELETE /api/review/{id}
-     */
     @DeleteMapping("/{id}")
     @ResponseBody
-    public ResultVO<Void> deleteReview(@PathVariable Integer id, HttpSession session) {
+    public ResultVO<Void> deleteReview(@PathVariable Integer id, HttpSession session) { // 删除评论接口
         User currentUser = getCurrentUser(session);
         if (currentUser == null) {
             return ResultVO.unauthorized();
         }
 
-        boolean success = reviewService.deleteReview(id, currentUser.getId());
+        boolean success = reviewService.deleteReview(id, currentUser.getId()); // 执行删除
         if (success) {
             return ResultVO.success(AppConstants.MSG_DELETE_SUCCESS, null);
         }
         return ResultVO.error(AppConstants.ERR_DELETE_FAILED);
     }
 
-    /**
-     * 从Session中获取当前用户
-     */
-    private User getCurrentUser(HttpSession session) {
+    private User getCurrentUser(HttpSession session) { // 从Session获取当前用户
         return (User) session.getAttribute(AppConstants.SESSION_CURRENT_USER);
     }
 }
